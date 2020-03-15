@@ -14,7 +14,7 @@ class OrdersController extends Controller
 
     public function __construct()
     {
-        $this->ordersRepo = RepositoryFactory::makeOrdersRepo();
+        $this->ordersRepo   = RepositoryFactory::makeOrdersRepo();
         $this->productsRepo = RepositoryFactory::makeProductsRepo();
         $this->partnersRepo = RepositoryFactory::makePartnersRepo();
     }
@@ -25,8 +25,12 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = $this->ordersRepo->getAllOrders();
-        return view('orders.index', compact('orders'));
+        $allOrders     = $this->ordersRepo->getAllOrders();
+        $overdueOrders = $this->ordersRepo->getOverdueOrders();
+        $currentOrders = $this->ordersRepo->getCurrentOrders();
+        $newOrders     = $this->ordersRepo->getNewOrders();
+        $doneOrders    = $this->ordersRepo->getDoneOrders();
+        return view('orders.index', compact('allOrders', 'overdueOrders', 'currentOrders', 'newOrders', 'doneOrders'));
     }
 
     /**
@@ -36,10 +40,9 @@ class OrdersController extends Controller
      */
     public function edit(Order $order)
     {
-        $products = $this->productsRepo->getAllProducts();
         $partners = $this->partnersRepo->getAllPartners();
         $statuses = Order::STATUSES;
-        return view('orders.edit', compact('order', 'products', 'partners', 'statuses'));
+        return view('orders.edit', compact('order', 'partners', 'statuses'));
     }
 
     /**

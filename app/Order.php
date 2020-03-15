@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -45,6 +46,11 @@ class Order extends Model
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function getDeliveryTime()
+    {
+        return Carbon::parse($this->delivery_dt)->format('h:i d.m.Y');
     }
 
     /**
