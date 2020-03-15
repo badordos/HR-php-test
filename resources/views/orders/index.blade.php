@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <h2>Заказы</h2>
                 @include('components.message')
                 <table class="table">
                     <thead>
@@ -16,7 +17,6 @@
                     </tr>
                     </thead>
                     <tbody>
-
                     @forelse($orders as $order)
                         <tr>
                             <th scope="row">
@@ -24,11 +24,11 @@
                                     {{$order->getId()}}
                                 </a>
                             </th>
-                            <td>{{$order->partner->name}}</td>
+                            <td>{{$order->partner->getName()}}</td>
                             <td>{{$order->getSum()}}</td>
                             <td>
                                 @foreach($order->products as $product)
-                                    <p>{{$product->name}} = {{$product->pivot->quantity}} шт.</p>
+                                    <p>{{$product->getName()}} = {{$product->pivot->quantity}} шт.</p>
                                 @endforeach
                             </td>
                             <td>{{$order->getStatus()}}</td>

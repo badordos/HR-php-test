@@ -20,4 +20,16 @@ class Product extends Model
     {
         return $this->price;
     }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    //RELATIONS
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id', 'id');
+    }
 }

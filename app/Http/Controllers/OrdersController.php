@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Factories\RepositoryFactory;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Order;
-use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
