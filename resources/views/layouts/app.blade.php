@@ -37,6 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp; <li><a href="{{ route('weather') }}">Погода</a></li>
+                        &nbsp; <li><a href="{{ route('orders.index') }}">Заказы</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
