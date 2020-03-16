@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Interfaces\IPartner;
 use Illuminate\Database\Eloquent\Model;
 
-class Partner extends Model
+class Partner extends Model implements IPartner
 {
     public function getId()
     {
@@ -14,5 +15,10 @@ class Partner extends Model
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

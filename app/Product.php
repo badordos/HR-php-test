@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Interfaces\IProduct;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Product extends Model implements IProduct
 {
     public function getId()
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\RepositoryFactory;
 use App\Http\Requests\OrderUpdateRequest;
+use App\Interfaces\IOrder;
 use App\Order;
 
 class OrdersController extends Controller
@@ -41,7 +42,7 @@ class OrdersController extends Controller
     public function edit(Order $order)
     {
         $partners = $this->partnersRepo->getAllPartners();
-        $statuses = Order::STATUSES;
+        $statuses = IOrder::STATUSES;
         return view('orders.edit', compact('order', 'partners', 'statuses'));
     }
 

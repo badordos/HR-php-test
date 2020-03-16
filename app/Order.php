@@ -2,16 +2,14 @@
 
 namespace App;
 
+use App\Interfaces\IOrder;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class Order extends Model
+class Order extends Model implements IOrder
 {
-    const STATUSES = [
-        0 => 'Новый заказ',
-        10 => 'Подтвержден',
-        20 => 'Завершен',
-    ];
+    use Notifiable;
 
     public function getId()
     {
@@ -64,6 +62,34 @@ class Order extends Model
             $total += $product->pivot->price * $product->pivot->quantity;
         }
         return $total;
+    }
+
+    /**
+     * Возвращает все продукты заказа в виде асс.массива
+     * @return array
+     */
+    public function getProductsToArray(){
+        $items = [];
+        foreach($this->products as $product){
+            $items[$product->getId()]['name'] = $product->getName();
+            $items[$product->getId()]['quantity'] = $product->pivot->quantity;
+        }
+
+        return $items;
+    }
+
+    /**
+     * Возвращает массив всех email вендоров заказа
+     * @return array
+     */
+    public function getVendorsEmailToArray(){
+
+        $emails = [];
+        foreach($this->products as $product){
+            $vendor = $product->vendor;
+            $emails[$vendor->getId()] = $vendor->getEmail();
+        }
+        return $emails;
     }
 
     //RELATIONS

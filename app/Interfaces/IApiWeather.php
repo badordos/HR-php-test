@@ -2,14 +2,6 @@
 
 namespace App\Interfaces;
 
-
-/**
- * Интерфейс с функциями для подробной информации о заказе
- *
- * Interface IOrderExpandService
- *
- * @package Api\Services\Interfaces\Order
- */
 interface IApiWeather
 {
     const BRYANSK_LAT = 53.2520900;
