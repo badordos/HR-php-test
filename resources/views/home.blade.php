@@ -8,11 +8,8 @@
                 <div class="panel-heading">Текст</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <p>Выполнены все задачи. Разве что мне было лень делать email рассылку, поэтому я сохраняюю уведомления о изменении статуса заказа (последняя задачка) в базу.
+                    </p>
                 </div>
             </div>
         </div>

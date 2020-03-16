@@ -38,6 +38,12 @@ interface IOrder
      */
     public function getProductsToArray();
 
+    /**
+     * Возвращает массив всех email вендоров заказа
+     * @return array
+     */
+    public function getVendorsEmailToArray();
+
     //RELATIONS
 
     public function partner();
